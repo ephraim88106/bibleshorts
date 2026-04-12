@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>성경 인물 묵상</title>
+  <title>성경 인물 묵상 — 매일 말씀과 함께</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,87 +11,121 @@
   <div class="top-bar">
     <a href="index.html" class="logo">성경<span>묵상</span></a>
     <nav>
+      <a href="index.html" class="active">홈</a>
       <a href="abraham.html">아브라함</a>
       <a href="isaac.html">이삭</a>
       <a href="jacob.html">야곱</a>
     </nav>
   </div>
 
-  <!-- ══ 메인 콘텐츠 ══ -->
-  <main>
+  <!-- ══ 히어로 섹션 ══ -->
+  <section class="home-hero">
     <div class="container">
-
-      <p class="persons-intro">
+      <p class="home-hero-label">Daily Bible Character Meditation</p>
+      <h1 class="home-hero-title">성경 인물 묵상</h1>
+      <p class="home-hero-desc">
         성경 속 인물들의 삶을 통해 하나님의 이야기를 묵상합니다.<br />
         그들의 믿음, 실패, 회복 — 그 모든 순간이 오늘 우리에게 말씀합니다.
       </p>
+    </div>
+  </section>
 
-      <div class="ornament-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <!-- ══ 최신 묵상 ══ -->
+  <section class="home-section">
+    <div class="container">
+      <h2 class="home-section-title">최신 묵상</h2>
+      <div class="featured-grid">
 
+        <a href="abraham_day02.html" class="featured-card">
+          <div class="featured-img">
+            <img src="images/Gemini_Generated_Image_eueruceueruceuer.png" alt="아브라함 Day 2" />
+          </div>
+          <div class="featured-body">
+            <span class="featured-badge">아브라함 · Day 2</span>
+            <h3 class="featured-title">제단을 쌓다 — 새 땅에서의 첫 예배</h3>
+            <p class="featured-ref">창세기 12:6-8</p>
+            <p class="featured-excerpt">가나안 땅에 도착한 아브람의 첫 번째 반응은 제단을 쌓는 것이었습니다. 아직 아무것도 이루어지지 않은 상태에서 — 그는 약속만 붙잡고 예배했습니다.</p>
+          </div>
+        </a>
+
+        <a href="isaac_day01.html" class="featured-card">
+          <div class="featured-img">
+            <img src="images/Gemini_Generated_Image_upl013upl013upl0.png" alt="이삭 Day 1" />
+          </div>
+          <div class="featured-body">
+            <span class="featured-badge">이삭 · Day 1</span>
+            <h3 class="featured-title">다시 판 우물 — 르호봇</h3>
+            <p class="featured-ref">창세기 26:17-22</p>
+            <p class="featured-excerpt">이삭은 맞서 싸우지 않았습니다. 조용히 자리를 옮겨 다시 팠습니다. 르호봇은 포기하지 않는 자에게 열립니다.</p>
+          </div>
+        </a>
+
+        <a href="jacob_day01.html" class="featured-card">
+          <div class="featured-img">
+            <img src="images/Gemini_Generated_Image_do9w9xdo9w9xdo9w.png" alt="야곱 Day 1" />
+          </div>
+          <div class="featured-body">
+            <span class="featured-badge">야곱 · Day 1</span>
+            <h3 class="featured-title">벧엘의 사닥다리</h3>
+            <p class="featured-ref">창세기 28:10-17</p>
+            <p class="featured-excerpt">도망자 야곱의 가장 낮은 자리에서 하나님은 먼저 기다리고 계셨습니다. 그 돌베개 자리가 벧엘이 됩니다.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 인물 시리즈 ══ -->
+  <section class="home-section home-section-alt">
+    <div class="container">
+      <h2 class="home-section-title">인물 시리즈</h2>
       <div class="persons-grid">
 
-        <!-- 아브라함 -->
-        <div class="person-card">
+        <a href="abraham.html" class="person-card">
           <div class="person-card-placeholder">
             <span class="ph-icon">🏔️</span>
-            <span class="ph-name">아브라함</span>
           </div>
           <div class="person-card-body">
             <div class="person-name">아브라함</div>
             <div class="person-name-en">Abraham — 믿음의 조상</div>
-            <p class="person-desc">
-              갈대아 우르를 떠나 약속의 땅을 향한 믿음의 여정.
-              하나님의 부르심에 순종하며 '믿음의 조상'이 된 한 사람의 이야기.
-            </p>
-            <div class="person-meta">📖 창세기 11–25장</div>
-            <a href="abraham.html" class="btn-read">묵상 읽기 →</a>
+            <p class="person-desc">갈대아 우르를 떠나 약속의 땅을 향한 믿음의 여정. 하나님의 부르심에 순종하며 '믿음의 조상'이 된 이야기.</p>
+            <span class="person-meta">창세기 11-25장 · 2편</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 이삭 -->
-        <div class="person-card">
+        <a href="isaac.html" class="person-card">
           <div class="person-card-placeholder">
             <span class="ph-icon">🌿</span>
-            <span class="ph-name">이삭</span>
           </div>
           <div class="person-card-body">
             <div class="person-name">이삭</div>
             <div class="person-name-en">Isaac — 약속의 아들</div>
-            <p class="person-desc">
-              번제단 위에 올려진 아들, 그러나 하나님이 예비하신 어린양.
-              묵묵한 순종과 인내로 복을 이어간 약속의 아들의 삶.
-            </p>
-            <div class="person-meta">📖 창세기 21–27장</div>
-            <a href="isaac.html" class="btn-read">묵상 읽기 →</a>
+            <p class="person-desc">묵묵한 순종과 인내로 복을 이어간 약속의 아들. 막힌 우물 앞에서 다시 파는 믿음의 사람.</p>
+            <span class="person-meta">창세기 21-27장 · 1편</span>
           </div>
-        </div>
+        </a>
 
-        <!-- 야곱 -->
-        <div class="person-card">
+        <a href="jacob.html" class="person-card">
           <div class="person-card-placeholder">
             <span class="ph-icon">🌙</span>
-            <span class="ph-name">야곱</span>
           </div>
           <div class="person-card-body">
             <div class="person-name">야곱</div>
             <div class="person-name-en">Jacob — 씨름하는 자</div>
-            <p class="person-desc">
-              속임수로 시작했으나 하나님과의 씨름으로 이스라엘이 된 자.
-              가장 연약한 곳에서 가장 강한 은혜를 받은 인생의 이야기.
-            </p>
-            <div class="person-meta">📖 창세기 25–50장</div>
-            <a href="jacob.html" class="btn-read">묵상 읽기 →</a>
+            <p class="person-desc">속임수로 시작했으나 하나님과의 씨름으로 이스라엘이 된 자. 가장 낮은 곳에서 가장 큰 은혜를 받은 이야기.</p>
+            <span class="person-meta">창세기 25-50장 · 1편</span>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
-  </main>
+  </section>
 
   <!-- ══ 푸터 ══ -->
   <footer>
     <p class="footer-verse">"믿음은 바라는 것들의 실상이요 보이지 않는 것들의 증거니" — 히브리서 11:1</p>
-    <p>성경 인물 묵상 &nbsp;|&nbsp; 매일 2편 발행</p>
+    <p>성경 인물 묵상</p>
   </footer>
 
 </body>

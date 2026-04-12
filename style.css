@@ -598,6 +598,16 @@ footer .footer-verse {
 }
 
 /* ════════════════════════════════
+   상단 광고 배너
+   ════════════════════════════════ */
+.ad-top {
+  text-align: center;
+  padding: 12px 0;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ════════════════════════════════
    사이드 광고 배너
    ════════════════════════════════ */
 .ad-sidebar {

@@ -3,101 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>매일 성경 인물 묵상</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Noto Sans KR', sans-serif; background: #fafaf8; color: #2d2d2d; line-height: 1.85; }
-    a { text-decoration: none; color: inherit; }
-
-    /* Nav */
-    .nav { background: #1a1a2e; padding: 16px 24px; text-align: center; }
-    .nav a { color: #fff; font-family: 'Noto Serif KR', serif; font-size: 1.1rem; font-weight: 700; }
-
-    /* Header */
-    .header { background: #1a1a2e; color: #fff; text-align: center; padding: 48px 24px 56px; }
-    .header .label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #c9a227; margin-bottom: 10px; }
-    .header h1 { font-family: 'Noto Serif KR', serif; font-size: 1.6rem; margin-bottom: 6px; }
-    .header .verse { font-style: italic; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-
-    /* Content */
-    .content { max-width: 700px; margin: 0 auto; padding: 48px 24px 80px; }
-    .content h2 { font-family: 'Noto Serif KR', serif; font-size: 1.25rem; color: #1a1a2e; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #c9a227; }
-    .content h2:first-child { margin-top: 0; }
-    .content p { margin-bottom: 16px; }
-    .content blockquote { border-left: 3px solid #c9a227; padding: 12px 18px; background: #f2f0eb; margin: 20px 0; font-style: italic; color: #555; border-radius: 0 6px 6px 0; }
-    .content ul { margin: 12px 0; padding-left: 20px; }
-    .content li { margin-bottom: 8px; }
-    .content strong { color: #1a1a2e; }
-
-    /* Post list link */
-    .more-posts { max-width: 700px; margin: 0 auto; padding: 0 24px 60px; }
-    .more-posts h3 { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: #1a1a2e; margin-bottom: 14px; }
-    .post-link { display: block; padding: 14px 18px; background: #fff; border: 1px solid #e5e2dc; border-radius: 8px; margin-bottom: 8px; transition: 0.2s; }
-    .post-link:hover { border-color: #c9a227; }
-    .post-link .date { font-size: 0.75rem; color: #999; }
-    .post-link .title { font-weight: 500; color: #1a1a2e; }
-
-    /* Footer */
-    .footer { background: #1a1a2e; color: rgba(255,255,255,0.5); text-align: center; padding: 28px; font-size: 0.8rem; }
-  </style>
+  <title>성경 인물 묵상</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="nav">
-  <a href="/">✝ 매일 성경 인물 묵상</a>
-</div>
+  <!-- ══ 헤더 ══ -->
+  <header>
+    <span class="header-ornament">✦ ✦ ✦</span>
+    <h1 class="site-title">성경 인물 묵상</h1>
+    <p class="site-subtitle">Meditations on the People of the Bible</p>
+    <span class="header-ornament">✦ ✦ ✦</span>
+  </header>
 
-<div class="header">
-  <p class="label">아브라함 시리즈 · Day 01</p>
-  <h1>아브라함 (1) — 떠남의 부르심</h1>
-  <p class="verse">창세기 12:1 "너는 너의 고향과 친척과 아버지의 집을 떠나 내가 네게 보여 줄 땅으로 가라"</p>
-</div>
+  <!-- ══ 네비게이션 ══ -->
+  <nav>
+    <a href="index.html">홈</a>
+    <a href="abraham.html">아브라함</a>
+    <a href="isaac.html">이삭</a>
+    <a href="jacob.html">야곱</a>
+  </nav>
 
-<div class="content">
-  <h2>인물 배경</h2>
-  <p>아브라함(원래 이름 아브람)은 갈대아 우르에서 태어났습니다. 우르는 당시 세계에서 가장 발전된 도시 중 하나로, 달의 신 '난나'를 숭배하는 우상 문화의 중심지였습니다. 아브라함의 아버지 데라도 우상을 섬기는 자였습니다(수 24:2).</p>
+  <!-- ══ 메인 콘텐츠 ══ -->
+  <main>
+    <div class="container">
 
-  <h2>부르심의 순간</h2>
-  <p>하나님은 우상의 땅 한가운데서 아브람을 부르셨습니다. "너는 너의 고향과 친척과 아버지의 집을 떠나 내가 네게 보여 줄 땅으로 가라." 이것은 단순한 이사가 아니었습니다. 정체성, 안전망, 미래 계획 모든 것을 내려놓으라는 요청이었습니다.</p>
+      <p class="persons-intro">
+        성경 속 인물들의 삶을 통해 하나님의 이야기를 묵상합니다.<br />
+        그들의 믿음, 실패, 회복 — 그 모든 순간이 오늘 우리에게 말씀합니다.
+      </p>
 
-  <blockquote>여호와께서 아브람에게 이르시되 너는 너의 고향과 친척과 아버지의 집을 떠나 내가 네게 보여 줄 땅으로 가라 - 창세기 12:1</blockquote>
+      <div class="ornament-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-  <h2>떠남의 의미</h2>
-  <p>아브라함이 떠난 것은 세 가지였습니다:</p>
-  <ul>
-    <li><strong>고향:</strong> 익숙한 환경과 문화적 정체성</li>
-    <li><strong>친척:</strong> 사회적 안전망과 소속감</li>
-    <li><strong>아버지의 집:</strong> 가장 깊은 뿌리, 가문의 유산</li>
-  </ul>
-  <p>하나님은 가장 쉬운 것부터가 아니라, 가장 넓은 것부터 좁혀가며 말씀하셨습니다. 마지막에 "아버지의 집"을 언급하신 것은, 가장 깊이 붙잡고 있는 것을 놓으라는 뜻입니다.</p>
+      <div class="persons-grid">
 
-  <h2>오늘의 적용</h2>
-  <p>하나님의 부르심은 항상 '떠남'과 '나아감'을 동시에 포함합니다. 무언가를 놓지 않으면 새것을 잡을 수 없습니다. 오늘, 하나님이 나에게 놓으라고 하시는 것은 무엇입니까?</p>
+        <!-- 아브라함 -->
+        <div class="person-card">
+          <div class="person-card-placeholder">
+            <span class="ph-icon">🏔️</span>
+            <span class="ph-name">아브라함</span>
+          </div>
+          <div class="person-card-body">
+            <div class="person-name">아브라함</div>
+            <div class="person-name-en">Abraham — 믿음의 조상</div>
+            <p class="person-desc">
+              갈대아 우르를 떠나 약속의 땅을 향한 믿음의 여정.
+              하나님의 부르심에 순종하며 '믿음의 조상'이 된 한 사람의 이야기.
+            </p>
+            <div class="person-meta">📖 창세기 11–25장 &nbsp;|&nbsp; 묵상 게시: 매일 2편</div>
+            <a href="abraham.html" class="btn-read">묵상 읽기 →</a>
+          </div>
+        </div>
 
-  <h2>묵상 질문</h2>
-  <p>내가 가장 깊이 붙잡고 있는 "아버지의 집"은 무엇인가요? 그것을 놓았을 때 하나님이 보여주실 새로운 땅을 기대할 수 있나요?</p>
-</div>
+        <!-- 이삭 -->
+        <div class="person-card">
+          <div class="person-card-placeholder">
+            <span class="ph-icon">🌿</span>
+            <span class="ph-name">이삭</span>
+          </div>
+          <div class="person-card-body">
+            <div class="person-name">이삭</div>
+            <div class="person-name-en">Isaac — 약속의 아들</div>
+            <p class="person-desc">
+              번제단 위에 올려진 아들, 그러나 하나님이 예비하신 어린양.
+              묵묵한 순종과 인내로 복을 이어간 약속의 아들의 삶.
+            </p>
+            <div class="person-meta">📖 창세기 21–27장 &nbsp;|&nbsp; 묵상 게시: 매일 2편</div>
+            <a href="isaac.html" class="btn-read">묵상 읽기 →</a>
+          </div>
+        </div>
 
-<div class="more-posts">
-  <h3>다른 묵상</h3>
-  <a class="post-link" href="/abraham_day02.html">
-    <span class="date">2026.04.14</span>
-    <span class="title">아브라함 (2) — 25년의 기다림</span>
-  </a>
-  <a class="post-link" href="/isaac_day01.html">
-    <span class="date">2026.04.15</span>
-    <span class="title">이삭 (1) — 조용한 순종의 사람</span>
-  </a>
-  <a class="post-link" href="/jacob_day01.html">
-    <span class="date">2026.04.16</span>
-    <span class="title">야곱 (1) — 속이는 자에서 이스라엘로</span>
-  </a>
-</div>
+        <!-- 야곱 -->
+        <div class="person-card">
+          <div class="person-card-placeholder">
+            <span class="ph-icon">🌙</span>
+            <span class="ph-name">야곱</span>
+          </div>
+          <div class="person-card-body">
+            <div class="person-name">야곱</div>
+            <div class="person-name-en">Jacob — 씨름하는 자</div>
+            <p class="person-desc">
+              속임수로 시작했으나 하나님과의 씨름으로 이스라엘이 된 자.
+              가장 연약한 곳에서 가장 강한 은혜를 받은 인생의 이야기.
+            </p>
+            <div class="person-meta">📖 창세기 25–50장 &nbsp;|&nbsp; 묵상 게시: 매일 2편</div>
+            <a href="jacob.html" class="btn-read">묵상 읽기 →</a>
+          </div>
+        </div>
 
-<div class="footer">
-  "주의 말씀은 내 발에 등이요 내 길에 빛이니이다" — 시편 119:105
-</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ 푸터 ══ -->
+  <footer>
+    <p class="footer-verse">"믿음은 바라는 것들의 실상이요 보이지 않는 것들의 증거니" — 히브리서 11:1</p>
+    <p>성경 인물 묵상 &nbsp;|&nbsp; 매일 2편 발행</p>
+  </footer>
 
 </body>
 </html>

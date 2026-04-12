@@ -11,68 +11,66 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="/" class="nav-logo">
-        <span class="logo-icon">✝</span>
-        <span class="logo-text">매일 성경 인물 묵상</span>
-      </a>
+      <a href="/" class="nav-logo">✝ 매일 성경 인물 묵상</a>
       <ul class="nav-menu">
         <li><a href="/" class="nav-link active">홈</a></li>
-        <li><a href="/board.html" class="nav-link">게시판</a></li>
-        <li><a href="/about.html" class="nav-link">소개</a></li>
+        <li><a href="/series.html" class="nav-link">인물 시리즈</a></li>
+        <li><a href="/board.html" class="nav-link">전체 목록</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="메뉴 열기">
+      <button class="nav-toggle" aria-label="메뉴">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header class="hero">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-subtitle">Daily Bible Character Devotion</p>
+      <p class="hero-label">Daily Bible Character Devotion</p>
       <h1 class="hero-title">매일 성경 인물 묵상</h1>
-      <p class="hero-desc">성경 속 인물들의 삶을 통해<br>오늘의 은혜를 묵상합니다</p>
+      <p class="hero-desc">성경 속 인물들의 삶을 통해<br>오늘 하나님이 주시는 말씀을 묵상합니다</p>
+      <a href="/board.html" class="hero-btn">묵상 읽기</a>
     </div>
   </header>
 
-  <!-- Today's Devotion -->
-  <section class="section today-devotion">
+  <!-- Latest Post -->
+  <section class="section">
     <div class="container">
-      <h2 class="section-title">오늘의 묵상</h2>
-      <div class="today-card" id="today-card">
-        <p class="loading-text">묵상을 불러오는 중...</p>
+      <h2 class="section-title">최신 묵상</h2>
+      <div class="latest-post" id="latest-post"></div>
+    </div>
+  </section>
+
+  <!-- Series Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">인물 시리즈</h2>
+        <a href="/series.html" class="link-more">전체 보기 &rarr;</a>
       </div>
+      <div class="series-grid" id="series-grid"></div>
     </div>
   </section>
 
   <!-- Recent Posts -->
-  <section class="section recent-posts">
+  <section class="section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">최근 묵상</h2>
-        <a href="/board.html" class="view-all">전체 보기 &rarr;</a>
+        <a href="/board.html" class="link-more">전체 보기 &rarr;</a>
       </div>
-      <div class="posts-grid" id="posts-grid">
-        <p class="loading-text">게시글을 불러오는 중...</p>
-      </div>
+      <div class="posts-list" id="recent-list"></div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <span class="logo-icon">✝</span>
-          <span>매일 성경 인물 묵상</span>
-        </div>
-        <p class="footer-verse">"주의 말씀은 내 발에 등이요 내 길에 빛이니이다" - 시편 119:105</p>
-        <p class="footer-copy">&copy; 2026 매일 성경 인물 묵상. All rights reserved.</p>
-      </div>
+    <div class="container footer-inner">
+      <p class="footer-verse">"주의 말씀은 내 발에 등이요 내 길에 빛이니이다" — 시편 119:105</p>
+      <p class="footer-copy">&copy; 2026 매일 성경 인물 묵상</p>
     </div>
   </footer>
 
-  <script defer src="/main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

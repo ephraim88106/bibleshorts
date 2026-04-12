@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>전체 목록 - 매일 성경 인물 묵상</title>
+  <title>인물 시리즈 - 매일 성경 인물 묵상</title>
   <link href="/style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -13,8 +13,8 @@
       <a href="/" class="nav-logo">✝ 매일 성경 인물 묵상</a>
       <ul class="nav-menu">
         <li><a href="/" class="nav-link">홈</a></li>
-        <li><a href="/series.html" class="nav-link">인물 시리즈</a></li>
-        <li><a href="/board.html" class="nav-link active">전체 목록</a></li>
+        <li><a href="/series.html" class="nav-link active">인물 시리즈</a></li>
+        <li><a href="/board.html" class="nav-link">전체 목록</a></li>
       </ul>
       <button class="nav-toggle" aria-label="메뉴">
         <span></span><span></span><span></span>
@@ -23,22 +23,13 @@
   </nav>
 
   <div class="page-header">
-    <h1>전체 묵상 목록</h1>
-    <p>날짜순으로 정리된 모든 묵상</p>
+    <h1>인물 시리즈</h1>
+    <p>성경 인물별로 정리된 ���상 시리즈</p>
   </div>
 
   <section class="section">
     <div class="container">
-      <div class="board-controls">
-        <input type="text" id="search-input" placeholder="인물, 구절, 키워드 검색..." />
-        <div class="filter-group">
-          <button class="filter-btn active" data-filter="all">전체</button>
-          <button class="filter-btn" data-filter="구약">구약</button>
-          <button class="filter-btn" data-filter="신약">신약</button>
-        </div>
-      </div>
-      <div class="posts-list" id="board-list"></div>
-      <div class="pagination" id="pagination"></div>
+      <div class="series-full" id="series-full"></div>
     </div>
   </section>
 

@@ -1,261 +1,281 @@
-// ===== Posts Data =====
-// 게시글 메타데이터는 posts/index.json에서 관리
-// 실제 내용은 posts/content/{id}.html 파일로 업로드
+// ===== 매일 성경 인물 묵상 =====
+// posts/index.json → 메타데이터
+// posts/content/{id}.html → 본문 HTML
 
-const POSTS_INDEX_URL = '/posts/index.json';
-const POSTS_CONTENT_DIR = '/posts/content/';
+const POSTS_INDEX = '/posts/index.json';
+const CONTENT_DIR = '/posts/content/';
 
 let allPosts = [];
 let currentPage = 1;
-const POSTS_PER_PAGE = 10;
+const PER_PAGE = 12;
 
-// ===== Initialize =====
+// 인물 이름 매핑 (id prefix → 한글 이름)
+const CHARACTER_NAMES = {
+  abraham: '아브라함',
+  isaac: '이삭',
+  jacob: '야곱',
+  moses: '모세',
+  david: '다윗',
+  ruth: '룻',
+  peter: '베드로',
+  paul: '바울'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  initNavigation();
-  loadPosts();
+  setupNav();
+  loadData();
 });
 
 // ===== Navigation =====
-function initNavigation() {
+function setupNav() {
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('.nav-menu');
-
   if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-  }
-
-  window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    }
-  });
-}
-
-// ===== Load Posts =====
-async function loadPosts() {
-  try {
-    const response = await fetch(POSTS_INDEX_URL);
-    if (response.ok) {
-      allPosts = await response.json();
-    }
-  } catch {
-    allPosts = [];
-  }
-
-  // Sort by date descending
-  allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // Render based on current page
-  const page = window.location.pathname;
-
-  if (page === '/' || page === '/index.html') {
-    renderTodayCard();
-    renderRecentPosts();
-  } else if (page === '/board.html') {
-    renderBoardList();
-    initBoardControls();
-  } else if (page === '/post.html') {
-    renderPost();
-  }
-}
-
-// ===== Load HTML content for a post =====
-async function loadPostContent(postId) {
-  try {
-    const response = await fetch(`${POSTS_CONTENT_DIR}${postId}.html`);
-    if (response.ok) {
-      return await response.text();
-    }
-  } catch {
-    // ignore
-  }
-  return '<p class="loading-text">묵상 내용을 불러올 수 없습니다.</p>';
-}
-
-// ===== Render Today's Card =====
-function renderTodayCard() {
-  const container = document.getElementById('today-card');
-  if (!container || allPosts.length === 0) return;
-
-  const post = allPosts[0];
-  container.innerHTML = `
-    <p class="card-date">${formatDate(post.date)}</p>
-    <span class="card-category">${post.category}</span>
-    <h3 class="card-title">${post.title}</h3>
-    <p class="card-verse">${post.verseText} - ${post.verse}</p>
-    <p class="card-excerpt">${post.excerpt}</p>
-    <a href="/post.html?id=${post.id}" class="card-link">전체 묵상 읽기 &rarr;</a>
-  `;
-}
-
-// ===== Render Recent Posts =====
-function renderRecentPosts() {
-  const container = document.getElementById('posts-grid');
-  if (!container) return;
-
-  const recentPosts = allPosts.slice(1, 7);
-
-  if (recentPosts.length === 0) {
-    container.innerHTML = '<p class="loading-text">아직 게시글이 없습니다.</p>';
-    return;
-  }
-
-  container.innerHTML = recentPosts.map(post => `
-    <div class="post-card" onclick="location.href='/post.html?id=${post.id}'">
-      <p class="card-date">${formatDate(post.date)}</p>
-      <span class="card-category">${post.category}</span>
-      <h4 class="card-title">${post.title}</h4>
-      <p class="card-excerpt">${post.excerpt}</p>
-    </div>
-  `).join('');
-}
-
-// ===== Render Board List =====
-function renderBoardList(filter = 'all', search = '') {
-  const container = document.getElementById('board-list');
-  if (!container) return;
-
-  let filtered = allPosts;
-
-  if (filter !== 'all') {
-    filtered = filtered.filter(p => p.category === filter);
-  }
-
-  if (search) {
-    const q = search.toLowerCase();
-    filtered = filtered.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      p.excerpt.toLowerCase().includes(q) ||
-      p.verse.toLowerCase().includes(q)
-    );
-  }
-
-  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
-  const start = (currentPage - 1) * POSTS_PER_PAGE;
-  const paginated = filtered.slice(start, start + POSTS_PER_PAGE);
-
-  if (paginated.length === 0) {
-    container.innerHTML = '<p class="loading-text">검색 결과가 없습니다.</p>';
-    renderPagination(0);
-    return;
-  }
-
-  container.innerHTML = paginated.map(post => `
-    <div class="board-item" onclick="location.href='/post.html?id=${post.id}'">
-      <span class="item-date">${formatDate(post.date)}</span>
-      <span class="item-category">${post.category}</span>
-      <span class="item-title">${post.title}</span>
-      <span class="item-arrow">&rsaquo;</span>
-    </div>
-  `).join('');
-
-  renderPagination(totalPages);
-}
-
-// ===== Pagination =====
-function renderPagination(totalPages) {
-  const container = document.getElementById('pagination');
-  if (!container || totalPages <= 1) {
-    if (container) container.innerHTML = '';
-    return;
-  }
-
-  let html = '';
-  for (let i = 1; i <= totalPages; i++) {
-    html += `<button class="${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-  }
-  container.innerHTML = html;
-}
-
-function goToPage(page) {
-  currentPage = page;
-  renderBoardList(getCurrentFilter(), getCurrentSearch());
-  window.scrollTo({ top: 200, behavior: 'smooth' });
-}
-
-// ===== Board Controls =====
-function initBoardControls() {
-  const searchBtn = document.getElementById('search-btn');
-  const searchInput = document.getElementById('search-input');
-  const filterBtns = document.querySelectorAll('.tag-btn');
-
-  if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-      currentPage = 1;
-      renderBoardList(getCurrentFilter(), searchInput.value);
-    });
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        currentPage = 1;
-        renderBoardList(getCurrentFilter(), searchInput.value);
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-menu')) {
+        menu.classList.remove('open');
       }
     });
   }
+}
 
-  filterBtns.forEach(btn => {
+// ===== Load Data =====
+async function loadData() {
+  try {
+    const res = await fetch(POSTS_INDEX);
+    if (res.ok) allPosts = await res.json();
+  } catch { /* fallback empty */ }
+
+  allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const path = window.location.pathname;
+  if (path === '/' || path === '/index.html') renderHome();
+  else if (path === '/board.html') renderBoard();
+  else if (path === '/series.html') renderSeriesPage();
+  else if (path === '/post.html') renderPost();
+}
+
+// ===== Utilities =====
+function formatDate(d) {
+  const dt = new Date(d);
+  return `${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
+}
+
+function getCharacterKey(id) {
+  // abraham_day01 → abraham, abraham → abraham
+  const match = id.match(/^([a-z]+)/);
+  return match ? match[1] : id;
+}
+
+function getSeriesMap() {
+  const map = {};
+  allPosts.forEach(p => {
+    const key = getCharacterKey(p.id);
+    if (!map[key]) map[key] = [];
+    map[key].push(p);
+  });
+  // Sort each series by date
+  Object.values(map).forEach(arr => arr.sort((a, b) => new Date(a.date) - new Date(b.date)));
+  return map;
+}
+
+// ===== HOME =====
+function renderHome() {
+  renderLatestPost();
+  renderSeriesGrid();
+  renderRecentList();
+}
+
+function renderLatestPost() {
+  const el = document.getElementById('latest-post');
+  if (!el || !allPosts.length) return;
+  const p = allPosts[0];
+  el.innerHTML = `
+    <p class="lp-date">${formatDate(p.date)}</p>
+    <span class="lp-badge">${p.category}</span>
+    <h3 class="lp-title">${p.title}</h3>
+    <p class="lp-verse">${p.verseText} — ${p.verse}</p>
+    <p class="lp-excerpt">${p.excerpt}</p>
+    <a href="/post.html?id=${p.id}" class="lp-link">전체 묵상 읽기 &rarr;</a>
+  `;
+}
+
+function renderSeriesGrid() {
+  const el = document.getElementById('series-grid');
+  if (!el) return;
+  const map = getSeriesMap();
+  const keys = Object.keys(map);
+
+  el.innerHTML = keys.map(key => {
+    const posts = map[key];
+    const name = CHARACTER_NAMES[key] || key;
+    return `
+      <div class="series-card" onclick="location.href='/series.html#${key}'">
+        <h3 class="sc-name">${name}</h3>
+        <p class="sc-count">${posts.length}편의 묵상</p>
+        <ul class="sc-list">
+          ${posts.slice(0, 3).map(p => `<li><a href="/post.html?id=${p.id}">${p.title}</a></li>`).join('')}
+          ${posts.length > 3 ? `<li style="color:var(--accent)">+ ${posts.length - 3}편 더보기</li>` : ''}
+        </ul>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRecentList() {
+  const el = document.getElementById('recent-list');
+  if (!el) return;
+  const recent = allPosts.slice(0, 6);
+  el.innerHTML = recent.map(p => postItemHTML(p)).join('');
+}
+
+// ===== BOARD =====
+function renderBoard(filter = 'all', search = '') {
+  const el = document.getElementById('board-list');
+  if (!el) return;
+
+  let filtered = allPosts;
+  if (filter !== 'all') filtered = filtered.filter(p => p.category === filter);
+  if (search) {
+    const q = search.toLowerCase();
+    filtered = filtered.filter(p => p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.verse.toLowerCase().includes(q));
+  }
+
+  const total = Math.ceil(filtered.length / PER_PAGE);
+  const page = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+
+  if (!page.length) {
+    el.innerHTML = '<p style="text-align:center;color:var(--text-light);padding:40px">결과가 없습니다.</p>';
+  } else {
+    el.innerHTML = page.map(p => postItemHTML(p)).join('');
+  }
+
+  renderPagination(total);
+  setupBoardControls();
+}
+
+function setupBoardControls() {
+  const input = document.getElementById('search-input');
+  const btns = document.querySelectorAll('.filter-btn');
+
+  if (input && !input.dataset.bound) {
+    input.dataset.bound = '1';
+    input.addEventListener('input', () => { currentPage = 1; renderBoard(getActiveFilter(), input.value); });
+  }
+
+  btns.forEach(btn => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = '1';
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentPage = 1;
-      renderBoardList(btn.dataset.filter, getCurrentSearch());
+      renderBoard(btn.dataset.filter, document.getElementById('search-input')?.value || '');
     });
   });
 }
 
-function getCurrentFilter() {
-  const active = document.querySelector('.tag-btn.active');
+function getActiveFilter() {
+  const active = document.querySelector('.filter-btn.active');
   return active ? active.dataset.filter : 'all';
 }
 
-function getCurrentSearch() {
-  const input = document.getElementById('search-input');
-  return input ? input.value : '';
+function renderPagination(total) {
+  const el = document.getElementById('pagination');
+  if (!el || total <= 1) { if (el) el.innerHTML = ''; return; }
+  el.innerHTML = Array.from({length: total}, (_, i) =>
+    `<button class="${i+1 === currentPage ? 'active' : ''}" onclick="goPage(${i+1})">${i+1}</button>`
+  ).join('');
 }
 
-// ===== Render Post =====
+function goPage(n) {
+  currentPage = n;
+  renderBoard(getActiveFilter(), document.getElementById('search-input')?.value || '');
+  window.scrollTo({top: 200, behavior: 'smooth'});
+}
+// expose globally
+window.goPage = goPage;
+
+// ===== SERIES PAGE =====
+function renderSeriesPage() {
+  const el = document.getElementById('series-full');
+  if (!el) return;
+  const map = getSeriesMap();
+
+  el.innerHTML = Object.keys(map).map(key => {
+    const posts = map[key];
+    const name = CHARACTER_NAMES[key] || key;
+    return `
+      <div class="sf-group" id="${key}">
+        <h2 class="sf-group-title">${name} 시리즈 (${posts.length}편)</h2>
+        <div class="sf-items">
+          ${posts.map((p, i) => `
+            <div class="sf-item" onclick="location.href='/post.html?id=${p.id}'">
+              <span class="sf-num">${String(i+1).padStart(2,'0')}</span>
+              <span class="sf-title">${p.title}</span>
+              <span class="sf-date">${formatDate(p.date)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ===== POST PAGE =====
 async function renderPost() {
-  const params = new URLSearchParams(window.location.search);
-  const postId = params.get('id');
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id) { location.href = '/board.html'; return; }
 
-  if (!postId) {
-    window.location.href = '/board.html';
-    return;
-  }
-
-  const post = allPosts.find(p => p.id === postId);
-
+  const post = allPosts.find(p => p.id === id);
   if (!post) {
-    document.getElementById('post-header').innerHTML = '<p class="loading-text">묵상을 찾을 수 없습니다.</p>';
+    document.getElementById('post-header').innerHTML = '<p style="padding:40px;text-align:center;color:var(--text-light)">묵상을 찾을 수 없습니다.</p>';
     return;
   }
 
-  // Update page title
-  document.title = `${post.title} - 매일 성경 인물 묵상`;
+  document.title = `${post.title} — 매일 성경 인물 묵상`;
 
-  // Render header
   document.getElementById('post-header').innerHTML = `
-    <p class="post-date">${formatDate(post.date)}</p>
-    <span class="post-category">${post.category}</span>
-    <h1 class="post-title">${post.title}</h1>
-    <p class="post-verse">${post.verseText} - ${post.verse}</p>
+    <p class="ph-date">${formatDate(post.date)}</p>
+    <span class="ph-badge">${post.category}</span>
+    <h1 class="ph-title">${post.title}</h1>
+    <p class="ph-verse">${post.verseText} — ${post.verse}</p>
   `;
 
-  // Load and render HTML content from file
-  const content = await loadPostContent(postId);
-  document.getElementById('post-body').innerHTML = content;
+  // Load HTML content
+  try {
+    const res = await fetch(`${CONTENT_DIR}${id}.html`);
+    if (res.ok) {
+      document.getElementById('post-content').innerHTML = await res.text();
+    } else {
+      document.getElementById('post-content').innerHTML = '<p>내용을 불러올 수 없습니다.</p>';
+    }
+  } catch {
+    document.getElementById('post-content').innerHTML = '<p>내용을 불러올 수 없습니다.</p>';
+  }
+
+  // Nav links (prev/next in same series)
+  const key = getCharacterKey(id);
+  const series = allPosts.filter(p => getCharacterKey(p.id) === key).sort((a, b) => new Date(a.date) - new Date(b.date));
+  const idx = series.findIndex(p => p.id === id);
+  const nav = document.getElementById('post-nav-links');
+  if (nav) {
+    let html = '';
+    if (idx > 0) html += `<a href="/post.html?id=${series[idx-1].id}">&larr; 이전</a>`;
+    if (idx < series.length - 1) html += `<a href="/post.html?id=${series[idx+1].id}">다음 &rarr;</a>`;
+    nav.innerHTML = html;
+  }
 }
 
-// ===== Utilities =====
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${year}년 ${month}월 ${day}일`;
+// ===== Shared HTML =====
+function postItemHTML(p) {
+  return `
+    <div class="post-item" onclick="location.href='/post.html?id=${p.id}'">
+      <span class="pi-date">${formatDate(p.date)}</span>
+      <span class="pi-badge">${p.category}</span>
+      <span class="pi-title">${p.title}</span>
+      <span class="pi-arrow">&rsaquo;</span>
+    </div>
+  `;
 }

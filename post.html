@@ -8,51 +8,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="/" class="nav-logo">
-        <span class="logo-icon">✝</span>
-        <span class="logo-text">매일 성경 인물 묵상</span>
-      </a>
+      <a href="/" class="nav-logo">✝ 매일 성경 인물 묵상</a>
       <ul class="nav-menu">
         <li><a href="/" class="nav-link">홈</a></li>
-        <li><a href="/board.html" class="nav-link">게시판</a></li>
-        <li><a href="/about.html" class="nav-link">소개</a></li>
+        <li><a href="/series.html" class="nav-link">인물 시리즈</a></li>
+        <li><a href="/board.html" class="nav-link">전체 목록</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="메뉴 열기">
+      <button class="nav-toggle" aria-label="메뉴">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Post Content -->
-  <article class="post-article">
-    <div class="container">
-      <div class="post-header" id="post-header">
-        <p class="loading-text">묵상을 불러오는 중...</p>
-      </div>
-      <div class="post-body" id="post-body"></div>
-      <div class="post-nav">
-        <a href="/board.html" class="btn btn-outline">&larr; 목록으로</a>
-      </div>
+  <article class="post-page">
+    <div class="container post-container">
+      <header class="post-header" id="post-header"></header>
+      <div class="post-content" id="post-content"></div>
+      <nav class="post-footer">
+        <a href="/board.html" class="btn-back">&larr; 목록으로</a>
+        <div class="post-nav-links" id="post-nav-links"></div>
+      </nav>
     </div>
   </article>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <span class="logo-icon">✝</span>
-          <span>매일 성경 인물 묵상</span>
-        </div>
-        <p class="footer-verse">"주의 말씀은 내 발에 등이요 내 길에 빛이니이다" - 시편 119:105</p>
-        <p class="footer-copy">&copy; 2026 매일 성경 인물 묵상. All rights reserved.</p>
-      </div>
+    <div class="container footer-inner">
+      <p class="footer-verse">"주의 말씀은 내 발에 등이요 내 길에 빛이니이다" — 시편 119:105</p>
+      <p class="footer-copy">&copy; 2026 매일 성경 인물 묵상</p>
     </div>
   </footer>
 
-  <script defer src="/main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

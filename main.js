@@ -5,6 +5,20 @@
 const POSTS_INDEX = '/posts/index.json';
 const CONTENT_DIR = '/posts/content/';
 
+// 인라인 fallback 데이터 (fetch 실패 시 사용)
+const FALLBACK_POSTS = [
+  {"id":"abraham_day01","date":"2026-04-13","category":"구약","title":"아브라함 (1) - 떠남의 부르심","verse":"창세기 12:1","verseText":"여호와께서 아브람에게 이르시되 너는 너의 고향과 친척과 아버지의 집을 떠나 내가 네게 보여 줄 땅으로 가라","excerpt":"하나님은 우상의 땅 한가운데서 아브람을 부르셨습니다. 고향, 친척, 아버지의 집—가장 깊이 붙잡고 있는 것을 놓으라는 부르심입니다."},
+  {"id":"abraham_day02","date":"2026-04-14","category":"구약","title":"아브라함 (2) - 25년의 기다림","verse":"창세기 15:6","verseText":"아브람이 여호와를 믿으니 여호와께서 이를 그의 의로 여기시고","excerpt":"약속을 받은 75세부터 이삭이 태어난 100세까지 25년. 흔들려도 포기하지 않으신 하나님의 신실하심을 봅니다."},
+  {"id":"isaac_day01","date":"2026-04-15","category":"구약","title":"이삭 (1) - 조용한 순종의 사람","verse":"창세기 22:7","verseText":"이삭이 그 아버지 아브라함에게 말하여 이르되 내 아버지여 하니 그가 이르되 내 아들아 내가 여기 있노라","excerpt":"이삭은 화려하지 않지만, 모리아 산에서의 조용한 순종으로 하나님의 구원 역사를 이어갔습니다."},
+  {"id":"jacob_day01","date":"2026-04-16","category":"구약","title":"야곱 (1) - 속이는 자에서 이스라엘로","verse":"창세기 32:28","verseText":"네 이름을 다시는 야곱이라 부를 것이 아니요 이스라엘이라 부를 것이니 이는 네가 하나님과 및 사람들과 겨루어 이겼음이니라","excerpt":"자기 힘으로 축복을 쟁취하려 했던 야곱. 환도뼈가 부러진 후에야 진정으로 하나님을 붙잡았습니다."},
+  {"id":"abraham","date":"2026-04-12","category":"구약","title":"아브라함 - 믿음의 조상","verse":"창세기 12:1-4","verseText":"여호와께서 아브람에게 이르시되 너는 너의 고향과 친척과 아버지의 집을 떠나 내가 네게 보여 줄 땅으로 가라","excerpt":"아브라함은 하나님의 부르심에 순종하여 안정된 삶을 떠나 미지의 땅으로 향했습니다."},
+  {"id":"david","date":"2026-04-11","category":"구약","title":"다윗 - 하나님의 마음에 합한 자","verse":"사무엘상 16:7","verseText":"사람은 외모를 보거니와 나 여호와는 중심을 보느니라","excerpt":"다윗은 완벽한 사람이 아니었지만, 항상 하나님께 돌아오는 회개의 마음을 가졌습니다."},
+  {"id":"peter","date":"2026-04-10","category":"신약","title":"베드로 - 실패를 딛고 일어선 반석","verse":"마태복음 16:18","verseText":"너는 베드로라 내가 이 반석 위에 내 교회를 세우리니 음부의 권세가 이기지 못하리라","excerpt":"베드로는 예수님을 세 번 부인한 자였지만, 회복된 후 초대교회의 반석이 되었습니다."},
+  {"id":"ruth","date":"2026-04-09","category":"구약","title":"룻 - 충성과 헌신의 여인","verse":"룻기 1:16","verseText":"어머니의 백성이 나의 백성이 되고 어머니의 하나님이 나의 하나님이 되시리니","excerpt":"룻은 이방 여인이었지만, 시어머니 나오미에 대한 충성과 하나님에 대한 신뢰를 통해 구원의 역사에 참여하게 되었습니다."},
+  {"id":"paul","date":"2026-04-08","category":"신약","title":"바울 - 변화된 삶의 증거","verse":"갈라디아서 2:20","verseText":"이제는 내가 사는 것이 아니요 오직 내 안에 그리스도께서 사시는 것이라","excerpt":"교회를 박해하던 사울이 복음의 가장 열정적인 전파자 바울이 되었습니다."},
+  {"id":"moses","date":"2026-04-07","category":"구약","title":"모세 - 부르심 앞의 부족함","verse":"출애굽기 3:11-12","verseText":"내가 반드시 너와 함께 있으리라","excerpt":"모세는 자신의 부족함을 느꼈지만, 하나님은 그를 통해 이스라엘을 이끌어 내셨습니다."}
+];
+
 let allPosts = [];
 let currentPage = 1;
 const PER_PAGE = 12;
@@ -44,8 +58,14 @@ function setupNav() {
 async function loadData() {
   try {
     const res = await fetch(POSTS_INDEX);
-    if (res.ok) allPosts = await res.json();
-  } catch { /* fallback empty */ }
+    if (res.ok) {
+      allPosts = await res.json();
+    } else {
+      allPosts = FALLBACK_POSTS;
+    }
+  } catch {
+    allPosts = FALLBACK_POSTS;
+  }
 
   allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 

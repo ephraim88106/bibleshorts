@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>매일 성경 인물 묵상</title>
+  <title>소개 - 매일 성경 인물 묵상</title>
   <link href="/style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -16,9 +16,9 @@
         <span class="logo-text">매일 성경 인물 묵상</span>
       </a>
       <ul class="nav-menu">
-        <li><a href="/" class="nav-link active">홈</a></li>
+        <li><a href="/" class="nav-link">홈</a></li>
         <li><a href="/board.html" class="nav-link">게시판</a></li>
-        <li><a href="/about.html" class="nav-link">소개</a></li>
+        <li><a href="/about.html" class="nav-link active">소개</a></li>
       </ul>
       <button class="nav-toggle" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
@@ -26,35 +26,29 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-subtitle">Daily Bible Character Devotion</p>
-      <h1 class="hero-title">매일 성경 인물 묵상</h1>
-      <p class="hero-desc">성경 속 인물들의 삶을 통해<br>오늘의 은혜를 묵상합니다</p>
-    </div>
-  </header>
-
-  <!-- Today's Devotion -->
-  <section class="section today-devotion">
+  <!-- About Content -->
+  <div class="page-header">
     <div class="container">
-      <h2 class="section-title">오늘의 묵상</h2>
-      <div class="today-card" id="today-card">
-        <p class="loading-text">묵상을 불러오는 중...</p>
-      </div>
+      <h1 class="page-title">소개</h1>
+      <p class="page-desc">매일 성경 인물 묵상에 오신 것을 환영합니다</p>
     </div>
-  </section>
+  </div>
 
-  <!-- Recent Posts -->
-  <section class="section recent-posts">
+  <section class="section">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">최근 묵상</h2>
-        <a href="/board.html" class="view-all">전체 보기 &rarr;</a>
-      </div>
-      <div class="posts-grid" id="posts-grid">
-        <p class="loading-text">게시글을 불러오는 중...</p>
+      <div class="about-content">
+        <div class="about-card">
+          <h2>우리의 비전</h2>
+          <p>성경에 등장하는 인물들의 삶을 깊이 묵상하며, 그들의 믿음과 실패, 회복의 여정을 통해 오늘날 우리의 삶에 적용할 수 있는 교훈을 나눕니다.</p>
+        </div>
+        <div class="about-card">
+          <h2>매일 묵상</h2>
+          <p>매일 한 명의 성경 인물을 선정하여, 그 인물의 배경, 핵심 사건, 영적 교훈, 그리고 오늘의 적용점을 짧고 깊이 있게 나눕니다.</p>
+        </div>
+        <div class="about-card">
+          <h2>함께 나누기</h2>
+          <p>게시판을 통해 묵상의 내용을 나누고, 서로의 깨달음을 공유하며 함께 성장하는 공동체를 만들어갑니다.</p>
+        </div>
       </div>
     </div>
   </section>

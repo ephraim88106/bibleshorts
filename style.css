@@ -598,6 +598,27 @@ footer .footer-verse {
 }
 
 /* ════════════════════════════════
+   사이드 광고 배너
+   ════════════════════════════════ */
+.ad-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  width: 160px;
+  height: 600px;
+}
+
+@media (max-width: 1400px) {
+  .ad-sidebar { right: 8px; }
+}
+
+@media (max-width: 1200px) {
+  .ad-sidebar { display: none; }
+}
+
+/* ════════════════════════════════
    반응형
    ════════════════════════════════ */
 @media (max-width: 768px) {

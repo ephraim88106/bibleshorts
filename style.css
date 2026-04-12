@@ -1,6 +1,6 @@
 /* ================================================
    성경 인물 묵상 — 공통 스타일시트
-   테마: 클래식 / 양피지 / 고전적
+   테마: 모던 클래식 / 고급 리파인드
    ================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
@@ -10,51 +10,45 @@
 
 /* ── 배경 및 기본 텍스트 ── */
 body {
-  background-color: #f2e0b8;
-  background-image:
-    radial-gradient(ellipse at 20% 30%, rgba(180,140,80,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 70%, rgba(160,110,50,0.10) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-color: #f8f4ec;
   font-family: 'Nanum Myeongjo', 'Georgia', serif;
-  color: #2c1810;
+  color: #2a2018;
   font-size: 18px;
   line-height: 2.1;
   min-height: 100vh;
 }
 
 /* ── 링크 ── */
-a { color: #7a5c1e; text-decoration: none; transition: color 0.2s; }
+a { color: #8b6914; text-decoration: none; transition: color 0.2s; }
 a:hover { color: #b8860b; }
 
 /* ── 컨테이너 ── */
-.container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
-.container-wide { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
+.container-wide { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
 
 /* ════════════════════════════════
    헤더
    ════════════════════════════════ */
 header {
-  background: linear-gradient(135deg, #2c1810 0%, #4a2c0a 50%, #2c1810 100%);
-  border-bottom: 4px solid #b8860b;
-  padding: 2.5rem 1.5rem 2rem;
+  background: #1a120a;
+  padding: 2.8rem 2rem 2.2rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
-header::before {
+header::after {
   content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, rgba(184,134,11,0.15) 0%, transparent 70%);
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
 }
 
 .site-title {
   font-family: 'Nanum Myeongjo', serif;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #f0d080;
-  letter-spacing: 0.12em;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 30px rgba(184,134,11,0.3);
+  letter-spacing: 0.18em;
   position: relative;
 }
 
@@ -62,165 +56,181 @@ header::before {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 1.0rem;
-  color: #c9a84c;
-  letter-spacing: 0.18em;
-  margin-top: 0.5rem;
-  position: relative;
+  color: #9a7a3a;
+  letter-spacing: 0.22em;
+  margin-top: 0.4rem;
 }
 
 .header-ornament {
-  color: #b8860b;
-  font-size: 1.1rem;
-  letter-spacing: 0.6em;
+  color: #6a4e1a;
+  font-size: 0.7rem;
+  letter-spacing: 0.9em;
   display: block;
   margin: 0.5rem 0;
-  position: relative;
 }
 
 /* ── 네비게이션 ── */
 nav {
-  background: #3d2207;
-  border-bottom: 2px solid #8b6914;
-  padding: 0.7rem 1.5rem;
+  background: #f8f4ec;
+  border-bottom: 1px solid #e0d0a8;
+  padding: 0 2rem;
   text-align: center;
 }
 
 nav a {
-  color: #e8c97a;
-  font-size: 1.05rem;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 1.2rem;
-  border-right: 1px solid rgba(184,134,11,0.3);
+  color: #5a3e10;
+  font-size: 1.0rem;
+  letter-spacing: 0.1em;
+  padding: 1rem 1.4rem;
   display: inline-block;
+  position: relative;
+  transition: color 0.2s;
 }
-nav a:last-child { border-right: none; }
-nav a:hover { color: #f5e09a; }
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #b8860b;
+  transition: width 0.25s;
+}
+
+nav a:hover { color: #b8860b; }
+nav a:hover::after { width: 60%; }
 
 /* ════════════════════════════════
-   페이지 헤더 (인물 페이지)
+   페이지 히어로 (인물 페이지)
    ════════════════════════════════ */
 .page-hero {
-  background: linear-gradient(180deg, #3d2207 0%, #5c3510 100%);
-  padding: 3rem 1.5rem 2.5rem;
+  background: #1a120a;
+  padding: 4rem 2rem 3.2rem;
   text-align: center;
-  border-bottom: 3px solid #b8860b;
+  position: relative;
+}
+
+.page-hero::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
 }
 
 .page-hero .person-label {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #c9a84c;
-  letter-spacing: 0.25em;
+  font-size: 1.05rem;
+  color: #9a7a3a;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.page-hero h1 {
-  font-size: 2.8rem;
-  color: #f0d080;
-  font-weight: 800;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  letter-spacing: 0.08em;
   margin-bottom: 0.6rem;
 }
 
+.page-hero h1 {
+  font-size: 3rem;
+  color: #f0d080;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.7rem;
+}
+
 .page-hero .page-desc {
-  font-size: 1.2rem;
-  color: #d4a84a;
+  font-size: 1.15rem;
+  color: #b89040;
   font-style: italic;
   max-width: 520px;
   margin: 0 auto;
+  line-height: 1.8;
 }
 
 /* ════════════════════════════════
-   이미지 (플레이스홀더 포함)
+   이미지
    ════════════════════════════════ */
 .scripture-image {
   width: 100%;
-  max-height: 380px;
+  max-height: 420px;
   object-fit: cover;
-  border: 3px solid #c9a84c;
-  border-radius: 2px;
-  box-shadow: 0 6px 24px rgba(44,24,16,0.35);
+  border-radius: 3px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   display: block;
 }
 
 .image-placeholder {
   width: 100%;
   height: 280px;
-  background: linear-gradient(135deg, #3d2207 0%, #5c3510 60%, #3d2207 100%);
-  border: 3px solid #c9a84c;
-  border-radius: 2px;
+  background: #ede5d0;
+  border: 1.5px dashed #c9a84c;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  box-shadow: 0 6px 24px rgba(44,24,16,0.35);
 }
 
-.image-placeholder .ph-icon { font-size: 2.8rem; opacity: 0.5; }
+.image-placeholder .ph-icon { font-size: 2.2rem; opacity: 0.4; }
 .image-placeholder .ph-text {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  color: #c9a84c;
-  font-size: 0.88rem;
+  color: #8b6914;
+  font-size: 0.95rem;
   text-align: center;
   padding: 0 2rem;
-  line-height: 1.5;
-  opacity: 0.8;
+  line-height: 1.6;
+  opacity: 0.75;
 }
 
 .image-caption {
   text-align: center;
-  font-size: 1.0rem;
-  color: #7a5c1e;
+  font-size: 0.95rem;
+  color: #9a7a3a;
   font-style: italic;
-  margin-top: 0.4rem;
-  letter-spacing: 0.04em;
+  margin-top: 0.6rem;
+  letter-spacing: 0.03em;
 }
 
 /* ════════════════════════════════
    묵상 카드
    ════════════════════════════════ */
-.meditation-section { padding: 3rem 0; }
+.meditation-section { padding: 4rem 0; }
 
 .meditation-card {
-  background: linear-gradient(160deg, #fdf6e3 0%, #f7e8c0 100%);
-  border: 1px solid #c9a84c;
-  border-radius: 2px;
-  padding: 0;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 4px 20px rgba(100,60,10,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+  background: #ffffff;
+  border: 1px solid #e8d9b8;
+  border-radius: 4px;
+  margin-bottom: 4rem;
+  box-shadow: 0 2px 24px rgba(120,80,20,0.08);
   overflow: hidden;
-  position: relative;
 }
 
-/* 카드 상단 색 바 */
+/* 카드 상단 */
 .card-header {
-  background: linear-gradient(135deg, #3d2207, #6b3a0d);
-  padding: 1.4rem 2rem;
-  border-bottom: 2px solid #b8860b;
+  background: #1a120a;
+  padding: 1.6rem 2.2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
+  border-bottom: 2px solid #b8860b;
 }
 
 .card-day-badge {
-  background: #b8860b;
-  color: #fdf6e3;
-  font-size: 0.95rem;
+  background: transparent;
+  color: #c9a84c;
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 0.25rem 0.9rem;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 1rem;
+  border: 1px solid #6a4e1a;
   border-radius: 20px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .card-title {
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: 800;
   color: #f0d080;
   letter-spacing: 0.04em;
@@ -229,92 +239,94 @@ nav a:hover { color: #f5e09a; }
 .card-title span {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #c9a84c;
+  font-size: 1.05rem;
+  color: #9a7a3a;
   font-weight: 400;
   display: block;
   letter-spacing: 0.06em;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
-.card-body { padding: 2rem 2rem 2.5rem; }
+.card-body { padding: 2.5rem 2.5rem 3rem; }
 
-/* ── 섹션 구분 ── */
-.section-block { margin-bottom: 2rem; }
+/* ── 섹션 ── */
+.section-block { margin-bottom: 2.4rem; }
 .section-block:last-child { margin-bottom: 0; }
 
 .section-label {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 1.0rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  color: #8b6914;
+  letter-spacing: 0.22em;
+  color: #b8860b;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .section-label::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, #c9a84c, transparent);
+  background: linear-gradient(90deg, #e0c880, transparent);
 }
 
 /* ── 성경말씀 박스 ── */
 .scripture-box {
-  background: linear-gradient(135deg, #3d2207 0%, #5c3510 100%);
-  border-left: 4px solid #b8860b;
-  border-radius: 0 2px 2px 0;
-  padding: 1.4rem 1.6rem;
-  margin: 0.5rem 0 1rem;
+  background: #fdfaf3;
+  border-left: 3px solid #b8860b;
+  border-radius: 0 3px 3px 0;
+  padding: 1.6rem 2rem 1.6rem 2.2rem;
+  margin: 0.3rem 0 0.5rem;
   position: relative;
 }
 
 .scripture-box::before {
   content: '\201C';
   position: absolute;
-  top: -0.3rem;
-  left: 0.8rem;
-  font-size: 3.5rem;
-  color: rgba(184,134,11,0.4);
+  top: 0.2rem;
+  left: 0.6rem;
+  font-size: 4rem;
+  color: rgba(184,134,11,0.15);
   font-family: 'Cormorant Garamond', serif;
   line-height: 1;
 }
 
 .scripture-text {
   font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 2.1;
-  color: #f0d080;
+  color: #2a2018;
   font-style: italic;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
 }
 
 .scripture-ref {
   display: block;
   text-align: right;
-  font-size: 1.05rem;
-  color: #c9a84c;
-  margin-top: 0.6rem;
+  font-size: 1.0rem;
+  color: #b8860b;
+  margin-top: 0.8rem;
   letter-spacing: 0.08em;
+  font-style: normal;
 }
 
-/* ── 해석 / 적용 본문 ── */
+/* ── 본문 텍스트 ── */
 .section-text {
   font-size: 1.2rem;
   line-height: 2.2;
-  color: #2c1810;
+  color: #2a2018;
 }
 
-/* ── 도전 메시지 박스 ── */
+/* ── 도전 메시지 ── */
 .challenge-box {
-  background: linear-gradient(135deg, #fdf0cc 0%, #f5e0a0 100%);
-  border: 1.5px solid #b8860b;
-  border-radius: 2px;
-  padding: 1.2rem 1.6rem;
+  background: #fdfaf3;
+  border-top: 1px solid #e0c880;
+  border-bottom: 1px solid #e0c880;
+  padding: 2rem 2.5rem;
   margin-top: 0.5rem;
+  text-align: center;
   position: relative;
 }
 
@@ -324,176 +336,256 @@ nav a:hover { color: #f5e09a; }
   top: -0.65rem;
   left: 50%;
   transform: translateX(-50%);
-  background: #f7e8c0;
-  padding: 0 0.5rem;
+  background: #ffffff;
+  padding: 0 0.8rem;
   color: #b8860b;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .challenge-text {
   font-size: 1.25rem;
   font-style: italic;
-  color: #4a2c0a;
+  color: #2a2018;
   line-height: 2.0;
-  text-align: center;
   font-weight: 700;
 }
 
 /* ── 구분선 ── */
 .ornament-divider {
   text-align: center;
-  color: #b8860b;
-  font-size: 1.1rem;
-  letter-spacing: 0.8em;
-  margin: 2.5rem 0;
-  opacity: 0.7;
+  color: #c9a84c;
+  font-size: 0.75rem;
+  letter-spacing: 1.2em;
+  margin: 3rem 0;
+  opacity: 0.6;
 }
 
 /* ════════════════════════════════
-   인덱스 — 인물 카드 그리드
+   인덱스 — 소개글
    ════════════════════════════════ */
 .persons-intro {
   text-align: center;
-  padding: 2.5rem 1.5rem 1rem;
+  padding: 3rem 1.5rem 0.5rem;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #5c3510;
-  max-width: 620px;
+  font-size: 1.2rem;
+  color: #5a3e10;
+  max-width: 600px;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
+/* ════════════════════════════════
+   인물 카드 그리드
+   ════════════════════════════════ */
 .persons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 2rem;
-  padding: 2rem 0 4rem;
+  padding: 2rem 0 5rem;
 }
 
 .person-card {
-  background: linear-gradient(160deg, #fdf6e3, #f7e8c0);
-  border: 1px solid #c9a84c;
-  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid #e8d9b8;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(100,60,10,0.15);
+  box-shadow: 0 2px 16px rgba(120,80,20,0.08);
   transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .person-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(100,60,10,0.22);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 32px rgba(120,80,20,0.14);
 }
 
 .person-card-image {
   width: 100%;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
   display: block;
-  border-bottom: 2px solid #c9a84c;
 }
 
 .person-card-placeholder {
   width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, #3d2207, #6b3a0d);
+  height: 210px;
+  background: #1a120a;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border-bottom: 2px solid #c9a84c;
+  gap: 0.6rem;
 }
-.person-card-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.4; }
+.person-card-placeholder .ph-icon { font-size: 2.2rem; opacity: 0.35; }
 .person-card-placeholder .ph-name {
   color: #c9a84c;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  opacity: 0.7;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
 }
 
-.person-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+.person-card-body { padding: 1.6rem 1.8rem 1.8rem; }
 
 .person-name {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #3d2207;
+  color: #1a120a;
   letter-spacing: 0.06em;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .person-name-en {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 0.9rem;
-  color: #8b6914;
+  font-size: 1.0rem;
+  color: #9a7a3a;
   letter-spacing: 0.1em;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
 }
 
 .person-desc {
-  font-size: 1.1rem;
-  color: #4a2c0a;
-  line-height: 1.75;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: #4a3820;
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
 }
 
 .person-meta {
-  font-size: 1.0rem;
-  color: #8b6914;
-  letter-spacing: 0.06em;
-  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  color: #9a7a3a;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
 }
 
 .btn-read {
   display: inline-block;
-  background: linear-gradient(135deg, #3d2207, #6b3a0d);
+  background: #1a120a;
   color: #f0d080;
   padding: 0.7rem 1.6rem;
-  border-radius: 2px;
-  font-size: 1.05rem;
+  border-radius: 3px;
+  font-size: 1.0rem;
   letter-spacing: 0.1em;
-  border: 1px solid #b8860b;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s;
 }
 .btn-read:hover {
   background: #b8860b;
-  color: #2c1810;
+  color: #fff;
+}
+
+/* ════════════════════════════════
+   목록 카드 (인물별 묵상 목록)
+   ════════════════════════════════ */
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.4rem;
+  padding: 2rem 0 5rem;
+}
+
+.list-card {
+  background: #ffffff;
+  border: 1px solid #e8d9b8;
+  border-radius: 4px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 2px 12px rgba(120,80,20,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+.list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(120,80,20,0.13);
+}
+
+.list-card-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #b8860b;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.list-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a120a;
+  margin-bottom: 0.2rem;
+}
+
+.list-card-ref {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #9a7a3a;
+  margin-bottom: 0.7rem;
+}
+
+.list-card-preview {
+  font-size: 1.0rem;
+  color: #4a3820;
+  line-height: 1.75;
+}
+
+.list-card-arrow {
+  display: block;
+  text-align: right;
+  color: #b8860b;
+  font-size: 0.92rem;
+  margin-top: 0.9rem;
+  letter-spacing: 0.06em;
+}
+
+.coming-soon {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ════════════════════════════════
    푸터
    ════════════════════════════════ */
 footer {
-  background: linear-gradient(135deg, #2c1810, #3d2207);
-  border-top: 3px solid #b8860b;
+  background: #1a120a;
   text-align: center;
-  padding: 2rem 1.5rem;
-  color: #8b6914;
-  font-size: 1.0rem;
-  letter-spacing: 0.1em;
-  line-height: 1.8;
+  padding: 2.5rem 2rem;
+  color: #6a4e1a;
+  font-size: 0.98rem;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
+  margin-bottom: 2rem;
 }
 
 footer .footer-verse {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #c9a84c;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 /* ════════════════════════════════
    반응형
    ════════════════════════════════ */
 @media (max-width: 640px) {
-  .site-title { font-size: 1.75rem; }
-  .page-hero h1 { font-size: 2rem; }
-  .card-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .card-body { padding: 1.4rem 1.2rem 1.8rem; }
+  .site-title { font-size: 1.7rem; }
+  .page-hero h1 { font-size: 2.2rem; }
+  .card-header { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .card-body { padding: 1.6rem 1.4rem 2rem; }
   .scripture-text { font-size: 1.1rem; }
   .section-text { font-size: 1.1rem; }
   .challenge-text { font-size: 1.1rem; }
   .persons-grid { grid-template-columns: 1fr; }
+  .list-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 1.2rem; }
 }

@@ -598,34 +598,14 @@ footer .footer-verse {
 }
 
 /* ════════════════════════════════
-   상단 광고 배너
+   AdSense 자동 광고 최적화
    ════════════════════════════════ */
-.ad-top {
-  text-align: center;
-  padding: 12px 0;
-  background: #fafafa;
-  border-bottom: 1px solid #f0f0f0;
+.adsbygoogle {
+  display: block;
 }
 
-/* ════════════════════════════════
-   사이드 광고 배너
-   ════════════════════════════════ */
-.ad-sidebar {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 90;
-  width: 160px;
-  height: 600px;
-}
-
-@media (max-width: 1400px) {
-  .ad-sidebar { right: 8px; }
-}
-
-@media (max-width: 1200px) {
-  .ad-sidebar { display: none; }
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
 }
 
 /* ════════════════════════════════

@@ -148,6 +148,16 @@ img { max-width: 100%; display: block; }
   transition: transform 0.4s;
 }
 
+.featured-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2c1f0f 0%, #4a3520 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.featured-img-placeholder .ph-icon { font-size: 2.8rem; opacity: 0.4; }
+
 .featured-card:hover .featured-img img {
   transform: scale(1.05);
 }

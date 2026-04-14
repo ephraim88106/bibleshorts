@@ -21,6 +21,45 @@ img { max-width: 100%; display: block; }
 .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ════════════════════════════════
+   카카오 광고
+   ════════════════════════════════ */
+.kakao-ad-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+  padding: 4px 0;
+  min-height: 98px;
+}
+
+.kakao-ad-side {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 150;
+  width: 160px;
+  height: 600px;
+}
+
+body { padding-top: 98px; }
+.top-bar { top: 98px !important; }
+
+@media (max-width: 1420px) {
+  .kakao-ad-side { display: none; }
+}
+
+@media (max-width: 820px) {
+  .kakao-ad-top { min-height: 0; padding: 2px 0; overflow: hidden; }
+}
+
+/* ════════════════════════════════
    네비게이션
    ════════════════════════════════ */
 .top-bar {

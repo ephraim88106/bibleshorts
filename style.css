@@ -57,6 +57,22 @@ img { max-width: 100%; display: block; }
 .top-bar nav a:hover { color: #222; background: #f8f8f8; }
 .top-bar nav a.active { color: #222; font-weight: 700; }
 
+.lang-toggle {
+  margin-left: 8px;
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  color: #555;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-toggle:hover { color: #222; border-color: #c49a2c; background: #fdfaf2; }
+
 /* ════════════════════════════════
    홈 히어로
    ════════════════════════════════ */
@@ -605,6 +621,30 @@ footer .footer-verse {
   font-size: 0.95rem;
   color: #aaa;
   margin-bottom: 6px;
+}
+
+/* ════════════════════════════════
+   Kakao Ads Styling
+   ════════════════════════════════ */
+.kakao-ad-top {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.kakao-ad-sidebar {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 90;
+}
+
+@media (max-width: 1400px) {
+  .kakao-ad-sidebar {
+    display: none;
+  }
 }
 
 /* ════════════════════════════════

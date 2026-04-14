@@ -662,6 +662,14 @@ footer .footer-verse {
   margin-bottom: 6px;
 }
 
+footer .footer-operator {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: #bbb;
+  letter-spacing: 0.04em;
+}
+footer .footer-operator strong { color: #999; font-weight: 600; }
+
 /* ════════════════════════════════
    Kakao Ads Styling
    ════════════════════════════════ */

@@ -706,6 +706,104 @@ ins.adsbygoogle[data-ad-status="unfilled"] {
 }
 
 /* ════════════════════════════════
+   뉴스레터 구독
+   ════════════════════════════════ */
+.newsletter-section {
+  padding: 64px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #2c1f0f 0%, #3d2d18 100%);
+  color: #fff;
+}
+
+.newsletter-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.newsletter-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.newsletter-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+.newsletter-form input[type="email"]:focus {
+  border-color: #c49a2c;
+  background: rgba(255,255,255,0.12);
+}
+
+.newsletter-form button {
+  padding: 14px 28px;
+  background: #c49a2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.newsletter-form button:hover {
+  background: #d4a93c;
+  transform: translateY(-1px);
+}
+
+.newsletter-privacy {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
+  .newsletter-form button {
+    width: 100%;
+  }
+}
+
+/* ════════════════════════════════
    반응형
    ════════════════════════════════ */
 @media (max-width: 768px) {
